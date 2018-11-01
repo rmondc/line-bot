@@ -52,6 +52,7 @@ post '/callback' do
           text: event.message['text'] + user_name + "!"
         }
         client.reply_message(event['replyToken'], message)
+        end
 
       # when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
       when Line::Bot::Event::MessageType::Image
