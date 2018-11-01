@@ -40,9 +40,16 @@ post '/callback' do
           p "#{response.code} #{response.body}"
         end
 
+        if event.message['text'] == "How are you?"
         message = {
           type: 'text',
-          text: event.message['text'] + ', ' + user_name
+          text: "I'm find, " + user_name
+        }
+        client.reply_message(event['replyToken'], message)
+        else
+        message = {
+          type: 'text',
+          text: event.message['text'] + user_name + "!"
         }
         client.reply_message(event['replyToken'], message)
 
