@@ -43,7 +43,7 @@ post '/callback' do
         if event.message['text'] == "How are you?"
         message = {
           type: 'text',
-          text: "I'm find, " + user_name
+          text: "I'm fine, " + user_name
         }
         client.reply_message(event['replyToken'], message)
         else
@@ -56,7 +56,7 @@ post '/callback' do
 
       # when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
       when Line::Bot::Event::MessageType::Image
-        response = client.get_message_content(event.message['id'])
+        response = client.get_message_content(event.message['id']) # creates the image
         tf = Tempfile.open
         tf.write(response.body)
 
